@@ -64,6 +64,9 @@ func MgoDBConnect() {
 	Dial = revel.Config.StringDefault("mongodb.dial", "localhost")
 	if MgoDBName, found = revel.Config.String("mongodb.name"); !found {
 		urls := strings.Split(Dial, "/")
+		if len(urls) <= 1 {
+			panic("MongoDB name not defined")
+		}
 		MgoDBName = urls[len(urls)-1]
 	}
 
@@ -100,7 +103,7 @@ func (c *MgoController) Begin() revel.Result {
 		MgoDBConnect()
 	}
 	// Calls Clone(), Copy() or New() depending on the configuration
-	c.MgoSession = MgoSession.Copy()
+	c.MgoSession = MgoSession.Clone()
 	return nil
 }
 
