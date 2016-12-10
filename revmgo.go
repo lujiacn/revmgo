@@ -102,7 +102,7 @@ func (c *MgoController) Begin() revel.Result {
 	if MgoSession == nil {
 		MgoDBConnect()
 	}
-	// Calls Clone(), Copy() or New() depending on the configuration
+	//use clone
 	c.MgoSession = MgoSession.Clone()
 	return nil
 }
