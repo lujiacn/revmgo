@@ -75,13 +75,13 @@ func MgoDBConnect() {
 	MgoSession, err = mgo.Dial(Dial)
 
 	if err != nil {
-		panic("Cannot connect to database")
+		panic(fmt.Sprintf("Cannot connect to mongo server: %s", Dial))
 	}
 
 	if MgoSession == nil {
 		MgoSession, err = mgo.Dial(Dial)
 		if err != nil {
-			panic("Cannot connect to database")
+			panic(fmt.Sprintf("Cannot connect to mongo server: %s", Dial))
 		}
 	}
 }
