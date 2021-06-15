@@ -1,4 +1,4 @@
-module github.com/lujiacn/revmgo
+module revmgo
 
 go 1.16
 
