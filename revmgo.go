@@ -34,7 +34,7 @@ var (
 				return reflect.ValueOf(objId)
 
 			} else {
-				revel.ERROR.Print("ObjectIdBinder.Bind - invalid ObjectId!")
+				revel.AppLog.Errorf("ObjectIdBinder.Bind - invalid ObjectId!")
 				return reflect.Zero(typ)
 
 			}
@@ -49,7 +49,7 @@ var (
 				output[name] = hexStr
 
 			} else {
-				revel.ERROR.Print("ObjectIdBinder.Unbind - invalid ObjectId!")
+				revel.AppLog.Errorf("ObjectIdBinder.Unbind - invalid ObjectId!")
 				output[name] = ""
 
 			}
